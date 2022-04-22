@@ -1,0 +1,9 @@
+---
+reports:
+  SuperNetwork:
+    - https://storage.googleapis.com/expertise-test/supernetwork/report/daily/2017-09-15.csv
+    - https://storage.googleapis.com/expertise-test/supernetwork/report/daily/2017-09-16.csvwey
+
+  AdUmbrella:
+    - https://storage.googleapis.com/expertise-test/reporting/adumbrella/adumbrella-15_9_2017.csv
+    - https://storage.googleapis.com/expertise-test/reporting/adumbrella/adumbrella-16_9_2017.csv
