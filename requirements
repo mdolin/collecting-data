@@ -1,2 +1,3 @@
 pyyaml
 pandas
+psycopg2-binary
