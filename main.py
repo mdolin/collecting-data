@@ -1,18 +1,18 @@
 import traceback
 import logging
 import argparse
-from dataclasses import dataclass
 import yaml
 import pandas as pd
 from datetime import date
 from database.db import save_to_database
+
 
 def csv_to_array(csv_url):
     try:
         df = pd.read_csv(csv_url)
     except Exception:
         return logging.error(traceback.format_exc())
-    
+
     return df
 
 
@@ -39,7 +39,10 @@ def pars_yaml():
 
 def parse_cli():
     parser = argparse.ArgumentParser(
-        description="The application takes adNetwork and date as input parameters. It then retrieves each report for these input parameters from the URLs provided in the advertising_network.YAML file and stores it in a database."
+        description="The application takes adNetwork and date as \
+            input parameters. It then retrieves each report for \
+            these input parameters from the URLs provided in the \
+            advertising_network.YAML file and stores it in a database."
     )
     parser.add_argument(
         "--adNetwork",
@@ -77,7 +80,7 @@ def main():
 
     csv_url = get_csv_url(data_url, date)
     csv_array = csv_to_array(csv_url)
-    #print(csv_array)
+    # print(csv_array)
     save_to_database(csv_array)
 
 
