@@ -1,9 +1,6 @@
-# I suggest all future developer to treat next few
-# lines as an opportunity to learn a thing or two about GNU make ;)
 python_version := $(shell \
   python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))' \
 )
-
 unit_test_targets := $(shell find tests/unit -name '*.py')
 integration_test_targets := $(shell ls tests/integration/)
 
