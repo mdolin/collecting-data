@@ -1,17 +1,19 @@
+import traceback
+import logging
 import argparse
+from dataclasses import dataclass
 import yaml
-import requests
-import csv
+import pandas as pd
 from datetime import date
-
+from database.db import save_to_database
 
 def csv_to_array(csv_url):
-    with requests.Session() as s:
-        download = s.get(csv_url)
-        decoded_content = download.content.decode("utf-8")
-        cr = csv.reader(decoded_content.splitlines(), delimiter=",")
-        my_list = list(cr)
-        return my_list
+    try:
+        df = pd.read_csv(csv_url)
+    except Exception:
+        return logging.error(traceback.format_exc())
+    
+    return df
 
 
 def get_csv_url(ad_network, date):
@@ -29,10 +31,10 @@ def pars_yaml():
     with open("advertising_network.yaml", "r") as stream:
         try:
             ad_network = yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            print(exc)
+        except Exception:
+            return logging.error(traceback.format_exc())
 
-    return ad_network
+        return ad_network
 
 
 def parse_cli():
@@ -75,7 +77,8 @@ def main():
 
     csv_url = get_csv_url(data_url, date)
     csv_array = csv_to_array(csv_url)
-    print(csv_array)
+    #print(csv_array)
+    save_to_database(csv_array)
 
 
 if __name__ == "__main__":
