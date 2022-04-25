@@ -9,6 +9,8 @@ integration_test_targets := $(shell ls tests/integration/)
 help:
 	@echo Available targets:
 	@fgrep "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sort
+	@echo ""
+	@python main.py -h
 
 # Developer convenience targets
 
@@ -22,11 +24,9 @@ clean:  ## Remove all auto-generated files
 
 .PHONY: $(unit_test_targets)
 $(unit_test_targets):
-	ansible-test units --requirements --python $(python_version) $@
 
 .PHONY: $(integration_test_targets)
 $(integration_test_targets):
-	ansible-test integration --requirements --python $(python_version) --diff $@
 
 # Things also used in CI/CD
 
@@ -42,4 +42,3 @@ units:  ## Run unit tests
 
 .PHONY: integration
 integration:  ## Run integration tests
-

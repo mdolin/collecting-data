@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import date
 from database.db import save_to_database
 
+logging.getLogger().setLevel(logging.INFO)
 
 def csv_to_array(csv_url):
     try:
@@ -45,8 +46,8 @@ def parse_cli():
             advertising_network.YAML file and stores it in a database."
     )
     parser.add_argument(
-        "--adNetwork",
         "-a",
+        "--adNetwork",
         action="store",
         required=True,
         type=str,
@@ -54,8 +55,8 @@ def parse_cli():
         help='Choose between "SuperNetwork" or "AdUmbrella"',
     )
     parser.add_argument(
-        "--date",
         "-d",
+        "--date",
         action="store",
         required=True,
         type=date.fromisoformat,
@@ -78,11 +79,17 @@ def main():
     data = pars_yaml()
     data_url = data["reports"][ad_network]
 
+    # Get CSV from URL
     csv_url = get_csv_url(data_url, date)
     csv_array = csv_to_array(csv_url)
-    # print(csv_array)
+    logging.info('Got CSV')
+
+    
+    # Save to database
     save_to_database(csv_array)
+    logging.info('Saved to DB')
 
 
 if __name__ == "__main__":
     main()
+    logging.info('DONE')
