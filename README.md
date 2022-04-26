@@ -58,7 +58,8 @@ Connect to the application container.
 docker exec -it collect_data /bin/bash
 ```
 
-### Example for Fetch and Insert data to a database for SuperNetwork with the date 2017-09-15
+### Example 
+For Fetch and Insert data to a database for SuperNetwork with the date 2017-09-15
 
 ```
 python main.py -a SuperNetwork -d 2017-09-15
@@ -83,6 +84,7 @@ optional arguments:
                         Choose between "SuperNetwork" or "AdUmbrella"
   -d DATE, --date DATE  Date in format "YYYY-MM-DD", Example: 2014-01-28
 ```
+
 
 The application will search for particular Ad Network URLs in an advertising_network.YAML. 
 
@@ -122,10 +124,6 @@ In `database/models.py` uncomment `LOCAL_DB_URI` and comment `DATABASE_URI` on l
 Unit tests should be written to test every function within this application but for testing database connection and database insertions [mock](https://docs.python.org/3/library/unittest.mock.html) should be used.
 
 Integrations test should check integrity and idempotency of application.
-
-
-
-
 
 ## Useful resources
 * https://docs.python.org/3/library/argparse.html
