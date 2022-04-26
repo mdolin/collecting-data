@@ -3,18 +3,20 @@ services:
 
   postgres_db:
     image: postgres:12.9
-    environment:   # Set up postgres database name and password
+    container_name: postgres_db
+    environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
-    ports:    # Set up ports exposed for other containers to connect to
+    ports:
       - 5433:5432
     networks:
       - app-tier
     volumes:
       - ./postgres:/docker-entrypoint-initdb.d
 
-  python_app:
+  collect_data:
+    container_name: collect_data
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,6 +24,8 @@ services:
       - postgres_db
     networks:
       - app-tier
+    command:
+      tail -f /dev/null
 
 networks:
   app-tier:

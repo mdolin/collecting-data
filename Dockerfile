@@ -4,8 +4,9 @@ FROM python:3.8
 WORKDIR /collecting_data
 
 # Copy the source from the PWD to the working directory inside the container
-COPY . ./collecting_data
+COPY . /collecting_data
 
+RUN apt-get update
 RUN pip install --upgrade pip
 RUN pip install -r requirements 
 
