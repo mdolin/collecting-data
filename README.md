@@ -1,5 +1,5 @@
 ## Description
-The goal was to write an app to collect data in a container. Application takes adNetwork and date as input parameters. It then retrieves each report for these input parameters from the URLs provided in advertising_network.YAML and store it in a database. All retrieved reports are saved to the same table called “daily_report”.
+The goal was to write an application to collect data in a container. Application takes adNetwork and date as input parameters. It then retrieves each report for these input parameters from the URLs provided in advertising_network.YAML and store it in a database. All retrieved reports are saved to the same table called “daily_report”.
 
 Resources used in this project are listed below in the [Useful resources](#useful-resources) section.
 
