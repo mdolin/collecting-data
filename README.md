@@ -118,7 +118,7 @@ Now you are able to execute database commands.
 `Ctrl+c` to Gracefully stop application
 
 ## Running application locally
-In `database/models.py` uncomment `LOCAL_DB_URI` and comment `DATABASE_URI` on lines 6 and 8 respectively.
+In `database/models.py` uncomment `LOCAL_DB_URI` and comment `DATABASE_URI` on lines 6 and 8 respectively. Or uncoment `SQLITE_URL` to insert data into SQLite.
 
 ## Testing
 Unit tests should be written to test every function within this application. For testing database connection and database insertions [mock](https://docs.python.org/3/library/unittest.mock.html) should be used.
