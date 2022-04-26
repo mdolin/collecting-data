@@ -59,7 +59,7 @@ docker exec -it collect_data /bin/bash
 ```
 
 ### Example 
-For Fetch and Insert data to a database for SuperNetwork with the date 2017-09-15
+For Fetch and Insert data to a database for SuperNetwork and the date 2017-09-15
 
 ```
 python main.py -a SuperNetwork -d 2017-09-15
@@ -121,7 +121,7 @@ Now you are able to execute database commands.
 In `database/models.py` uncomment `LOCAL_DB_URI` and comment `DATABASE_URI` on lines 6 and 8 respectively.
 
 ## Testing
-Unit tests should be written to test every function within this application but for testing database connection and database insertions [mock](https://docs.python.org/3/library/unittest.mock.html) should be used.
+Unit tests should be written to test every function within this application. For testing database connection and database insertions [mock](https://docs.python.org/3/library/unittest.mock.html) should be used.
 
 Integrations test should check integrity and idempotency of application.
 
