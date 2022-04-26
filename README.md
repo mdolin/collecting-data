@@ -117,7 +117,7 @@ Now you are able to execute database commands.
 
 `Ctrl+c` to Gracefully stop application
 
-## Running application locally
+### Running application locally
 In `database/models.py` uncomment `LOCAL_DB_URI` and comment `DATABASE_URI` on lines 6 and 8 respectively. Or uncoment `SQLITE_URL` to insert data into SQLite.
 
 ## Testing
