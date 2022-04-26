@@ -2,12 +2,14 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 
-# Scheme: "postgres+psycopg2://<USERNAME>:<PASSWORD>@<IP_ADDRESS>:<PORT>/<DATABASE_NAME>"
-DATABASE_URI = "postgres+psycopg2://postgres:password@localhost:5432/adnetwork"
+# Scheme: "postgres//<USERNAME>:<PASSWORD>@<IP_ADDRESS>:<PORT>/<DATABASE_NAME>"
+# LOCAL_DB_URI = "postgresql:///postgres"
+# SQLITE_URL = "sqlite:///csv_test.db"
+DATABASE_URI = "postgresql+psycopg2://postgres:postgres@postgres_db:5432/postgres"
 
 
 def connect_db():
-    db = create_engine("sqlite:///csv_test.db")
+    db = create_engine(DATABASE_URI)
     return db
 
 
