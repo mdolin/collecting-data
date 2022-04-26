@@ -8,6 +8,8 @@ session = Session()
 
 def save_to_database(dataframe=None, session=session):
     for _, row in dataframe.iterrows():
+        if row['Date'] == "Totals":
+            continue
         rev = row["Revenue (usd)"] if "Revenue (usd)" in row.keys() else row["Revenue"]
         db_dict = dict(
             date=row["Date"],
